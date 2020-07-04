@@ -1,32 +1,27 @@
 from copy import deepcopy
 
 
-# 1
 def init(n):
     return [list(range(n, 0, -1)), [], []]
 
 
-# 2
 def nombre_disques(plateau, numtour):
     return len(plateau[numtour])
 
 
-# 3
 def disque_superieur(plateau, numtour):
     if not plateau[numtour]:
         return -1
     else:
         return min(plateau[numtour])
 
-
-# 4
+    
 def position_disque(plateau, numtour):
     for tour in plateau:
         if numtour in tour:
             return plateau.index(tour)
 
-
-# 5
+        
 def verifier_deplacement(plateau, pi, pf):
     if plateau[pi] and (not plateau[pf] or position_disque(plateau, pf) > position_disque(plateau, pi)):
         return True
@@ -34,7 +29,6 @@ def verifier_deplacement(plateau, pi, pf):
         return False
 
 
-# 6
 def verifier_victoire(plateau, n):
     if plateau == [[], [], list(range(n, 0, -1))]:
         return True
@@ -42,8 +36,6 @@ def verifier_victoire(plateau, n):
         return False
 
 
-# Partie C
-# 1
 def lire_coords(plateau):
 
     while True:
@@ -72,14 +64,11 @@ def lire_coords(plateau):
     return tour_depart, tour_arrivee
 
 
-# 2
 def jouer_un_coup(plateau, n):
     pi, pf = lire_coords(plateau)
     plateau[pf].append(plateau[pi][-1])
     del plateau[pi][-1]
     return plateau
-
-# 3
 
 
 def boucle_jeu(plateau, n):
@@ -107,9 +96,6 @@ def boucle_jeu(plateau, n):
             gagne = True
             print(f'Gagné en {compteur} coups, {gagne}')
             return coups
-
-    # Partie D
-# 1
 
 
 nombre = int(input("Donnez le nombre de disques: "))
